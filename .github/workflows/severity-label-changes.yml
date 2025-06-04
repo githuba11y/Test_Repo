@@ -41,22 +41,19 @@ jobs:
           LABELS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             "${{ github.event.issue.url }}/labels?per_page=100" | jq -r '.[].name')
-
+          no_severity=true
           # Check if at least one severity label exists after the removal
           for label in "${SEVERITY_LABELS[@]}"; do
-            if [[ " $LABELS " =~ " $label " ]]; then
-              echo "A severity label is still present."
-              echo "no_severity=false" >> $GITHUB_ENV
-              exit 0
+            if echo "$LABELS" | grep -q "^$label$"; then
+              no_severity=false
+              break
             fi
           done
-
-          # If no severity label is found, set the environment variable
-          echo "no_severity=true" >> $GITHUB_ENV
+          echo "no_severity=$no_severity" >> $GITHUB_ENV
 
       # Step 4: Tag the actor if No Severity Label Found
       - name: Tag the actor if No Severity Label Found
-        if: env.no_severity == 'true' && env.is_severity == 'false'
+        if: env.no_severity == 'true' 
         run: |
           
           # Specify the user to be tagged
