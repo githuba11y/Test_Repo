@@ -1,4 +1,4 @@
-name: Detect and Validate Severity Label Changes
+name: Detect and Validate Severity Label ChangesAdd commentMore actions
 
 on:
   issues:
@@ -45,12 +45,14 @@ jobs:
           # Check if at least one severity label exists after the removal
           for label in "${SEVERITY_LABELS[@]}"; do
             if [[ " $LABELS " =~ " $label " ]]; then
+              echo "A severity label is still present."
               echo "no_severity=false" >> $GITHUB_ENV
-            else
-              echo "no_severity=true" >> $GITHUB_ENV
               exit 0
             fi
           done
+
+          # If no severity label is found, set the environment variable
+          echo "no_severity=true" >> $GITHUB_ENV
 
       # Step 4: Tag the actor if No Severity Label Found
       - name: Tag the actor if No Severity Label Found
