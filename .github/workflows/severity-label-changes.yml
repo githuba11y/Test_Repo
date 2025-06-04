@@ -56,7 +56,7 @@ jobs:
 
       # Step 4: Tag the actor if No Severity Label Found
       - name: Tag the actor if No Severity Label Found
-        if: env.no_severity == 'true' && env.is_severity == 'true'
+        if: env.no_severity == 'true' && env.is_severity == 'false'
         run: |
           
           # Specify the user to be tagged
