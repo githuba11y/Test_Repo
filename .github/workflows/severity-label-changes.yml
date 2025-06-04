@@ -51,12 +51,9 @@ jobs:
             fi
           done
 
-          # If no severity label is found, set the environment variable
-          echo "no_severity=true" >> $GITHUB_ENV
-
       # Step 4: Tag the actor if No Severity Label Found
       - name: Tag the actor if No Severity Label Found
-        if: env.no_severity == 'true'
+        if: env.no_severity =~'false'
         run: |
           
           # Specify the user to be tagged
