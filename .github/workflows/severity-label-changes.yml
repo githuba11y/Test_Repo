@@ -45,10 +45,9 @@ jobs:
           # Check if at least one severity label exists after the removal
           for label in "${SEVERITY_LABELS[@]}"; do
             if [[ " $LABELS " =~ " $label " ]]; then
-              echo "A severity label is still present."
               echo "no_severity=false" >> $GITHUB_ENV
-         else
-          echo "no_severity=true" >> $GITHUB_ENV
+            else
+              echo "no_severity=true" >> $GITHUB_ENV
               exit 0
             fi
           done
