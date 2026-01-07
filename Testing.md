@@ -1,2 +1,0 @@
-Pass
-password is
