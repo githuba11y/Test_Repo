@@ -1,0 +1,3 @@
+[submodule "repotest"]
+	path = repotest
+	url = https://github.com/Teamelite12/repotest
