@@ -1,0 +1,24 @@
+{
+  "name": "test_repo",
+  "version": "1.0.0",
+  "description": "A11y testing purpose only",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githuba11y/Test_Repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/githuba11y/Test_Repo/issues"
+  },
+  "homepage": "https://github.com/githuba11y/Test_Repo#readme",
+  "dependencies": {
+    "react": "^19.2.5"
+  }
+}
